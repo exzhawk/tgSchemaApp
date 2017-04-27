@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container class="app-sidenav-container">
+  <md-sidenav #sidenav class="app-sidenav" mode="side" opened="true">
+    <md-nav-list>
+      <h3 md-subheader>Constructors</h3>
+      <md-list-item *ngFor="let c of schema.constructors" (click)="selectSchemaItem(c)">
+        {{c.predicate}}
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader>Methods</h3>
+      <md-list-item *ngFor="let m of schema.methods">
+        {{m.method}}
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+  <div class="app-sidenav-content"></div>
+</md-sidenav-container>
