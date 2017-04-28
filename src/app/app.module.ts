@@ -5,7 +5,10 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MdSidenavModule, MdListModule, MdButtonModule, MdCardModule} from "@angular/material";
+import {
+  MdSidenavModule, MdListModule, MdButtonModule, MdCardModule, MdInputModule,
+  MdToolbarModule
+} from "@angular/material";
 import {SchemaService} from "./schema.service";
 import 'hammerjs'
 
@@ -22,6 +25,8 @@ import 'hammerjs'
     MdListModule,
     MdButtonModule,
     MdCardModule,
+    MdInputModule,
+    MdToolbarModule,
   ],
   providers: [SchemaService],
   bootstrap: [AppComponent]

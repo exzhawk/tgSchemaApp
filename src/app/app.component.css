@@ -4,5 +4,9 @@ md-sidenav-container {
 }
 
 md-sidenav {
-  width: 200px;
+  width: 277px;
+}
+
+md-card {
+  margin: 12px;
 }

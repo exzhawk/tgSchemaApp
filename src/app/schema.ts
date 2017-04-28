@@ -6,6 +6,8 @@ export class SchemaItem {
   id: number;
   params: Param[];
   type: string;
+  predicate: string;
+  method: string;
 }
 export class Constructor extends SchemaItem {
   predicate: string;

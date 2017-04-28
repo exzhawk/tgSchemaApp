@@ -1,16 +1,45 @@
 <md-sidenav-container class="app-sidenav-container">
   <md-sidenav #sidenav class="app-sidenav" mode="side" opened="true">
+    <md-toolbar>
+      <md-input-container>
+        <input #searchBox mdInput placeholder="keyword" (keyup)="search(searchBox.value)">
+      </md-input-container>
+    </md-toolbar>
     <md-nav-list>
       <h3 md-subheader>Constructors</h3>
-      <md-list-item *ngFor="let c of schema.constructors" (click)="selectSchemaItem(c)">
+      <md-list-item *ngFor="let c of schemaItems.constructors" (click)="selectSchemaItem(c)">
         {{c.predicate}}
       </md-list-item>
       <md-divider></md-divider>
       <h3 md-subheader>Methods</h3>
-      <md-list-item *ngFor="let m of schema.methods">
+      <md-list-item *ngFor="let m of schemaItems.methods" (click)="selectSchemaItem(m)">
         {{m.method}}
       </md-list-item>
     </md-nav-list>
   </md-sidenav>
-  <div class="app-sidenav-content"></div>
+  <div class="app-sidenav-content">
+    <md-card>
+      <md-card-header *ngIf="selectedSchemaItem.predicate">
+        <md-card-title>{{selectedSchemaItem.predicate}}</md-card-title>
+        <md-card-subtitle>Constructor</md-card-subtitle>
+      </md-card-header>
+      <md-card-header *ngIf="selectedSchemaItem.method">
+        <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
+        <md-card-subtitle>Method</md-card-subtitle>
+      </md-card-header>
+      <md-card-header>
+        <md-card-title>{{selectedSchemaItem.type}}</md-card-title>
+        <md-card-subtitle>Return</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <md-list>
+          <md-list-item *ngFor="let p of selectedSchemaItem.params"
+                        (click)="selectSchemaConstructorByPredicate(p.type)">
+            <h4 md-line>{{p.name}}</h4>
+            <p md-line>{{p.type}}</p>
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
 </md-sidenav-container>
