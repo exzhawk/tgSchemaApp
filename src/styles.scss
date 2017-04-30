@@ -1,0 +1,20 @@
+html, body, app-root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+app-root {
+  @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+  display: flex;
+  flex-direction: column;
+  md-toolbar-row {
+    md-input-container {
+      width: 100%;
+    }
+  }
+  md-sidenav-container {
+    flex: 1;
+  }
+}
+

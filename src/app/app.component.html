@@ -1,10 +1,10 @@
+<md-toolbar>
+  <md-input-container>
+    <input type="search" #searchBox mdInput placeholder="keyword" (input)="search(searchBox.value)">
+  </md-input-container>
+</md-toolbar>
 <md-sidenav-container class="app-sidenav-container">
   <md-sidenav #sidenav class="app-sidenav" mode="side" opened="true">
-    <md-toolbar>
-      <md-input-container>
-        <input #searchBox mdInput placeholder="keyword" (keyup)="search(searchBox.value)">
-      </md-input-container>
-    </md-toolbar>
     <md-nav-list>
       <h3 md-subheader>Constructors</h3>
       <md-list-item *ngFor="let c of schemaItems.constructors" (click)="selectSchemaItem(c)">
@@ -27,9 +27,17 @@
         <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
         <md-card-subtitle>Method</md-card-subtitle>
       </md-card-header>
+    </md-card>
+    <md-card>
       <md-card-header>
         <md-card-title>{{selectedSchemaItem.type}}</md-card-title>
         <md-card-subtitle>Return</md-card-subtitle>
+      </md-card-header>
+    </md-card>
+    <md-card>
+      <md-card-header>
+        <md-card-title>Params</md-card-title>
+        <md-card-subtitle *ngIf="selectedSchemaItem.params && selectedSchemaItem.params.length==0">None</md-card-subtitle>
       </md-card-header>
       <md-card-content>
         <md-list>

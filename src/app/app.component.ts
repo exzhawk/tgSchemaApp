@@ -7,7 +7,7 @@ import construct = Reflect.construct;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
@@ -45,6 +45,6 @@ export class AppComponent implements OnInit {
     this.schemaItems.constructors = this.schema.constructors.filter(constructor => constructor.predicate.match(new RegExp(term, 'i')));
     this.schemaItems.methods = this.schema.methods.filter(method => method.method.match(new RegExp(term, 'i')));
     console.log(term);
-    console.log(this.schema);
+    console.log(this.schemaItems);
   }
 }
