@@ -5,7 +5,7 @@ import {Constructor, SchemaItem, Schema} from "./schema";
 import 'rxjs/add/operator/toPromise'
 @Injectable()
 export class SchemaService {
-  private schemaUrl = '/assets/schema.json';
+  private schemaUrl = '/assets/tl_schema_api_65.json';
 
   constructor(private http: Http) {
   }
