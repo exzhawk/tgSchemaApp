@@ -10,11 +10,15 @@ import {
   MdToolbarModule
 } from "@angular/material";
 import {SchemaService} from "./schema.service";
-import 'hammerjs'
+import 'hammerjs';
+import {SchemaItemComponent} from './schema-item/schema-item.component'
+import {AppRoutingModule} from "./app-routing.module";
+import {SearchService} from "./search.service";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SchemaItemComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +31,9 @@ import 'hammerjs'
     MdCardModule,
     MdInputModule,
     MdToolbarModule,
+    AppRoutingModule,
   ],
-  providers: [SchemaService],
+  providers: [SchemaService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

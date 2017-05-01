@@ -16,4 +16,10 @@ export class SchemaService {
   }
 
 
+  getSchemaItemByName(name: string) {
+    return this.getSchema().then(
+      schema => schema.constructors.find(schemaItem => schemaItem.predicate == name) || schema.methods.find(schemaItem => schemaItem.method == name)
+    )
+
+  }
 }

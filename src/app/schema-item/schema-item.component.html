@@ -1,0 +1,33 @@
+<div *ngIf="selectedSchemaItem">
+<md-card>
+  <md-card-header *ngIf="selectedSchemaItem.predicate">
+    <md-card-title>{{selectedSchemaItem.predicate}}</md-card-title>
+    <md-card-subtitle>Constructor</md-card-subtitle>
+  </md-card-header>
+  <md-card-header *ngIf="selectedSchemaItem.method">
+    <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
+    <md-card-subtitle>Method</md-card-subtitle>
+  </md-card-header>
+</md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>{{selectedSchemaItem.type}}</md-card-title>
+    <md-card-subtitle>Return</md-card-subtitle>
+  </md-card-header>
+</md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>Params</md-card-title>
+    <md-card-subtitle *ngIf="selectedSchemaItem.params && selectedSchemaItem.params.length==0">None</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <md-list>
+      <md-list-item *ngFor="let p of selectedSchemaItem.params"
+                    (click)="selectSchemaConstructorByType(p.type)">
+        <h4 md-line>{{p.name}}</h4>
+        <p md-line>{{p.type}}</p>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+</div>

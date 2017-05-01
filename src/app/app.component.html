@@ -7,7 +7,7 @@
   <md-sidenav #sidenav class="app-sidenav" mode="side" opened="true">
     <md-nav-list>
       <h3 md-subheader>Constructors</h3>
-      <md-list-item *ngFor="let c of schemaItems.constructors" (click)="selectSchemaItem(c)">
+      <md-list-item *ngFor="let c of schemaItems.constructors" [routerLink]="['/detail',c.predicate]">
         {{c.predicate}}
       </md-list-item>
       <md-divider></md-divider>
@@ -18,36 +18,6 @@
     </md-nav-list>
   </md-sidenav>
   <div class="app-sidenav-content">
-    <md-card>
-      <md-card-header *ngIf="selectedSchemaItem.predicate">
-        <md-card-title>{{selectedSchemaItem.predicate}}</md-card-title>
-        <md-card-subtitle>Constructor</md-card-subtitle>
-      </md-card-header>
-      <md-card-header *ngIf="selectedSchemaItem.method">
-        <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
-        <md-card-subtitle>Method</md-card-subtitle>
-      </md-card-header>
-    </md-card>
-    <md-card>
-      <md-card-header>
-        <md-card-title>{{selectedSchemaItem.type}}</md-card-title>
-        <md-card-subtitle>Return</md-card-subtitle>
-      </md-card-header>
-    </md-card>
-    <md-card>
-      <md-card-header>
-        <md-card-title>Params</md-card-title>
-        <md-card-subtitle *ngIf="selectedSchemaItem.params && selectedSchemaItem.params.length==0">None</md-card-subtitle>
-      </md-card-header>
-      <md-card-content>
-        <md-list>
-          <md-list-item *ngFor="let p of selectedSchemaItem.params"
-                        (click)="selectSchemaConstructorByPredicate(p.type)">
-            <h4 md-line>{{p.name}}</h4>
-            <p md-line>{{p.type}}</p>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+    <router-outlet></router-outlet>
   </div>
 </md-sidenav-container>
