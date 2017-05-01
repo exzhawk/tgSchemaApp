@@ -1,6 +1,6 @@
 <md-toolbar>
   <md-input-container>
-    <input type="search" #searchBox mdInput placeholder="keyword" (input)="search(searchBox.value)">
+    <input type="search" #searchBox mdInput placeholder="keyword" (ngModelChange)="search()" [(ngModel)]="keyword">
   </md-input-container>
 </md-toolbar>
 <md-sidenav-container class="app-sidenav-container">
@@ -12,7 +12,7 @@
       </md-list-item>
       <md-divider></md-divider>
       <h3 md-subheader>Methods</h3>
-      <md-list-item *ngFor="let m of schemaItems.methods" (click)="selectSchemaItem(m)">
+      <md-list-item *ngFor="let m of schemaItems.methods" [routerLink]="['/detail',m.method]">
         {{m.method}}
       </md-list-item>
     </md-nav-list>

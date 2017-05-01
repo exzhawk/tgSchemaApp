@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component,  Input, OnInit} from '@angular/core';
 import {SchemaItem} from "../schema";
 import {ActivatedRoute, Params} from "@angular/router";
 import {SchemaService} from "../schema.service";
 import 'rxjs/add/operator/switchMap'
-import{Location} from '@angular/common'
 import {SearchService} from "../search.service";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-schema-item',
@@ -14,9 +14,9 @@ import {SearchService} from "../search.service";
 export class SchemaItemComponent implements OnInit {
   @Input() selectedSchemaItem: SchemaItem;
 
+
   constructor(private route: ActivatedRoute,
               private schemaService: SchemaService,
-              private location: Location,
               private searchService: SearchService,) {
   }
 
@@ -26,8 +26,9 @@ export class SchemaItemComponent implements OnInit {
       .subscribe(schemaItem => this.selectedSchemaItem = schemaItem)
   }
 
-  selectSchemaConstructorByType(type: string): void {
-    this.searchService.emitChange(type)
+  selectSchemaConstructorByType(type: string, asType: string): void {
+    console.log(AppComponent.cleanType(type));
+    this.searchService.emitChange(asType + ':' + AppComponent.cleanType(type));
   }
 
 

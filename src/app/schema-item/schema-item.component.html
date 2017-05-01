@@ -10,10 +10,17 @@
   </md-card-header>
 </md-card>
 <md-card>
-  <md-card-header>
-    <md-card-title>{{selectedSchemaItem.type}}</md-card-title>
-    <md-card-subtitle>Return</md-card-subtitle>
-  </md-card-header>
+  <md-card-content>
+    <md-list>
+      <md-list-item>
+        <h4 md-line>Return</h4>
+        <p md-line>{{selectedSchemaItem.type}}</p>
+        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'any')">as Any</button>
+        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'type')">as Type</button>
+        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'param')">as Param</button>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
 </md-card>
 <md-card>
   <md-card-header>
@@ -22,10 +29,12 @@
   </md-card-header>
   <md-card-content>
     <md-list>
-      <md-list-item *ngFor="let p of selectedSchemaItem.params"
-                    (click)="selectSchemaConstructorByType(p.type)">
+      <md-list-item *ngFor="let p of selectedSchemaItem.params" >
         <h4 md-line>{{p.name}}</h4>
         <p md-line>{{p.type}}</p>
+        <button md-button (click)="selectSchemaConstructorByType(p.type,'any')">as Any</button>
+        <button md-button (click)="selectSchemaConstructorByType(p.type,'type')">as Type</button>
+        <button md-button (click)="selectSchemaConstructorByType(p.type,'param')">as Param</button>
       </md-list-item>
     </md-list>
   </md-card-content>
