@@ -1,42 +1,51 @@
 <div *ngIf="selectedSchemaItem">
-<md-card>
-  <md-card-header *ngIf="selectedSchemaItem.predicate">
-    <md-card-title>{{selectedSchemaItem.predicate}}</md-card-title>
-    <md-card-subtitle>Constructor</md-card-subtitle>
-  </md-card-header>
-  <md-card-header *ngIf="selectedSchemaItem.method">
-    <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
-    <md-card-subtitle>Method</md-card-subtitle>
-  </md-card-header>
-</md-card>
-<md-card>
-  <md-card-content>
-    <md-list>
-      <md-list-item>
-        <h4 md-line>Return</h4>
-        <p md-line>{{selectedSchemaItem.type}}</p>
-        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'any')">as Any</button>
-        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'type')">as Type</button>
-        <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'param')">as Param</button>
-      </md-list-item>
-    </md-list>
-  </md-card-content>
-</md-card>
-<md-card>
-  <md-card-header>
-    <md-card-title>Params</md-card-title>
-    <md-card-subtitle *ngIf="selectedSchemaItem.params && selectedSchemaItem.params.length==0">None</md-card-subtitle>
-  </md-card-header>
-  <md-card-content>
-    <md-list>
-      <md-list-item *ngFor="let p of selectedSchemaItem.params" >
-        <h4 md-line>{{p.name}}</h4>
-        <p md-line>{{p.type}}</p>
-        <button md-button (click)="selectSchemaConstructorByType(p.type,'any')">as Any</button>
-        <button md-button (click)="selectSchemaConstructorByType(p.type,'type')">as Type</button>
-        <button md-button (click)="selectSchemaConstructorByType(p.type,'param')">as Param</button>
-      </md-list-item>
-    </md-list>
-  </md-card-content>
-</md-card>
+  <md-card>
+    <md-card-header *ngIf="selectedSchemaItem.predicate">
+      <md-card-title>{{selectedSchemaItem.predicate}}</md-card-title>
+      <md-card-subtitle>Constructor</md-card-subtitle>
+    </md-card-header>
+    <md-card-header *ngIf="selectedSchemaItem.method">
+      <md-card-title>{{selectedSchemaItem.method}}</md-card-title>
+      <md-card-subtitle>Method</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <md-list>
+        <md-list-item>
+          <h4 md-line>Type</h4>
+          <p md-line>{{selectedSchemaItem.type}}</p>
+          <!--<button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'any')">as Any</button>-->
+          <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'type')">as Type</button>
+          <button md-button (click)="selectSchemaConstructorByType(selectedSchemaItem.type,'param')">as Param</button>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <md-card-header>
+      <md-card-title>Params</md-card-title>
+      <md-card-subtitle *ngIf="selectedSchemaItem.params && selectedSchemaItem.params.length==0">None</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <md-list>
+        <md-list-item *ngFor="let p of selectedSchemaItem.params">
+          <h4 md-line>{{p.name}}</h4>
+          <p md-line>{{p.type}}</p>
+          <p class="param-doc">{{p.doc}}</p>
+          <button md-button (click)="selectSchemaConstructorByType(p.type,'type')">as Type</button>
+          <button md-button (click)="selectSchemaConstructorByType(p.type,'param')">as Param</button>
+          <!--<button md-button (click)="selectSchemaConstructorByType(p.type,'any')">as Any</button>-->
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <md-card-header>
+      <md-card-title>Document</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <p class="doc">
+        {{selectedSchemaItem.doc}}
+      </p>
+    </md-card-content>
+  </md-card>
 </div>

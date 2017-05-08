@@ -8,6 +8,7 @@ export class SchemaItem {
   type: string;
   predicate: string;
   method: string;
+  doc: string;
 }
 export class Constructor extends SchemaItem {
   predicate: string;
@@ -18,4 +19,5 @@ export class Method extends SchemaItem {
 export class Param {
   name: string;
   type: string;
+  doc: string;
 }

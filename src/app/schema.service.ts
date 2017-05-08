@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {Constructor, SchemaItem, Schema} from "./schema";
+import {Schema} from "./schema";
 
 import 'rxjs/add/operator/toPromise'
 @Injectable()
 export class SchemaService {
-  private schemaUrl = '/assets/tl_schema_api_65.json';
+  // private schemaUrl = '/assets/tl_schema_api_65.json';
+  private schemaUrl = '/assets/tl_schema_api_65_with_doc.json';
 
   constructor(private http: Http) {
   }
